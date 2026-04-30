@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 class="mb-4">會員管理 (Admin)</h2>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>帳號</th><th>Email</th><th>電話</th><th>生日</th><th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in users %}
+                <tr>
+                    <td>{{ u.username }}</td>
+                    <td>{{ u.email }}</td>
+                    <td><span class="badge bg-info text-dark">{{ u.phone | mask_phone }}</span></td>
+                    <td>{{ u.birthday | format_tw_date }}</td>
+                    <td>
+                        <a href="/users/{{ u.username }}/edit" class="btn btn-sm btn-warning">編輯</a>
+                        {% if u.username != 'admin' and u.username != session.username %}
+                        <form action="/users/{{ u.username }}/delete" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('確定要刪除此會員嗎？')">刪除</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="/announcement" class="btn btn-secondary mt-3">返回公告頁</a>
+{% endblock %}

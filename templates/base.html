@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>進階會員系統</title>
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <style>
+        /* 讓整個 body 變成全螢幕高度，並使用 Flexbox 置中 */
+        body { 
+            background-color: #fcfcfc; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        /* 導覽列保持在最上方 */
+        .navbar { background: white !important; border-bottom: 1px solid #eee; }
+
+        /* 內容容器：使用 flex-grow 自動填滿剩餘空間，並內部置中 */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center; /* 垂直置中 */
+            justify-content: center; /* 水平置中 */
+            padding: 20px;
+        }
+
+        .card { 
+            border: none; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            border-radius: 15px; 
+            width: 100%; /* 確保卡片能響應式縮放 */
+        }
+
+        .footer-text { font-size: 0.9rem; color: #888; padding-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand navbar-light py-3 fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">👥 會員系統</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link px-3" href="/">首頁</a>
+                {% if not session.username %}
+                    <a class="nav-link px-3" href="/login">登入</a>
+                    <a class="nav-link px-3" href="/register">註冊</a>
+                {% else %}
+                    <a class="nav-link px-3" href="/logout">登出</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- 置中容器 -->
+    <div class="main-content">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <div class="text-center footer-text">
+        <p>1142 Web 程式設計 - 期中考</p>
+    </div>
+</body>
+</html>

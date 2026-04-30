@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card p-4">
+            <div class="card-body">
+                <h2 class="text-center fw-bold mb-4">📄 帳號註冊</h2>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label text-secondary">使用者帳號</label>
+                        <input type="text" name="username" class="form-control" placeholder="請輸入帳號" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-secondary">Email 地址</label>
+                        <input type="email" name="email" class="form-control" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-secondary">設定密碼 (6-16 字元)</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label text-secondary">行動電話 (選填)</label>
+                            <input type="text" name="phone" class="form-control" placeholder="09xxxxxxxx">
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-secondary">出生日期</label>
+                        <input type="date" name="birthday" class="form-control" required>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-lg shadow-sm text-white" style="background-color: #007bbd;">
+                            完成註冊，前往登入
+                        </button>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="/login" class="text-decoration-none text-muted">已有帳號？返回登入頁</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

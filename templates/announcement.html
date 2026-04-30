@@ -1,0 +1,9 @@
+<h2>系統公告</h2>
+<p>這是固定公告內容：歡迎來到本系統！</p>
+<hr>
+<a href="/profile">個人資料</a>
+{% if session.is_admin %}
+
+    | <a href="/users">會員管理</a>
+{% endif %}
+| <a href="/logout">登出</a>
